@@ -8,6 +8,7 @@ class GoodsAddPage extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Text('DearPet'),
+        centerTitle: false,
       ),
       body: Column(
         children: [
