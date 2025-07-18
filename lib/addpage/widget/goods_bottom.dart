@@ -82,7 +82,7 @@ class GoodsBottom extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         suffixText: ' 원',
-                        border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFFFFFFF))),
+                        border: OutlineInputBorder(borderSide: BorderSide()),
                       ),
                     ),
                   ),
