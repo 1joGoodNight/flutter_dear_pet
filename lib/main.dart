@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'NotoSans'),
+      theme: ThemeData(
+          fontFamily: 'NotoSans', scaffoldBackgroundColor: Colors.white),
       home: GoodsAddPage(),
     );
   }
