@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class BuyWidget extends StatefulWidget {
-  const BuyWidget({
+class BuyBtn extends StatefulWidget {
+  const BuyBtn({
     super.key,
   });
 
   @override
-  State<BuyWidget> createState() => _BuyWidgetState();
+  State<BuyBtn> createState() => _BuyBtnState();
 }
 
-class _BuyWidgetState extends State<BuyWidget> {
+class _BuyBtnState extends State<BuyBtn> {
   //수량 변경 버튼
   GestureDetector quantityBtn(Image image, void Function() onTap) {
     return GestureDetector(

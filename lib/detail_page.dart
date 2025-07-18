@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dear_pet/app_bar.dart';
-import 'package:flutter_dear_pet/detail_page_bottom_btn.dart';
+import 'package:flutter_dear_pet/buy_btn.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -62,10 +62,10 @@ class DetailPage extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
-      bottomNavigationBar: const BuyWidget(),
+      bottomNavigationBar: const BuyBtn(),
     );
   }
 }
