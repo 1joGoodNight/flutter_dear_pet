@@ -47,13 +47,18 @@ class GoodsBottom extends StatelessWidget {
                     '상품 이름',
                     style: TextStyle(color: Color(0xFF333333), fontSize: 16),
                   ),
+                  SizedBox(width: 41),
                   Expanded(
                       child: SizedBox(
                     width: 268,
                     height: 48,
                     child: TextField(
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFFFFFFFF)
+                            ),
+                          ),
                           hintText: '상품 이름을 입력하세요.'),
                     ),
                   ))
@@ -72,11 +77,12 @@ class GoodsBottom extends StatelessWidget {
                     '상품 가격',
                     style: TextStyle(color: Color(0xFF333333), fontSize: 16),
                   ),
+                  SizedBox(width: 41),
                   Expanded(
                     child: TextField(
                       decoration: InputDecoration(
                         suffixText: ' 원',
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFFFFFFF))),
                       ),
                     ),
                   ),
