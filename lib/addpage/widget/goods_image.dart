@@ -9,8 +9,8 @@ class GoodsImage extends StatelessWidget {
       color: Colors.grey[300]!,
       child: GestureDetector(
         onTap: () {},
-        child: Stack(
-          alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/img_noimg.png'),
             SizedBox(height: 16,),
