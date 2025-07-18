@@ -55,9 +55,7 @@ class GoodsBottom extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFFFFFFFF)
-                            ),
+                            borderSide: BorderSide(color: Color(0xFFFFFFFF)),
                           ),
                           hintText: '상품 이름을 입력하세요.'),
                     ),
@@ -82,10 +80,14 @@ class GoodsBottom extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         suffixText: ' 원',
-                        border: OutlineInputBorder(borderSide: BorderSide()),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFFFFFFF),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
