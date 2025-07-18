@@ -5,7 +5,7 @@ class GoodsBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: Container(
-      color: Colors.yellow,
+      color: Colors.white,
     ));
   }
 }
