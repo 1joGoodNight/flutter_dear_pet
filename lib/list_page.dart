@@ -61,81 +61,89 @@ class _ListPageState extends State<ListPage> {
           final product = goodsList[index];
           //  List.generate(20, (index) {
           bool isClicked = clickedIndices.contains(index);
-          return InkWell(
-            onTap: () {
-              _handleTap(index);
-              // setState(() {
-              //   if (isClicked) {
-              //     clickedIndices.remove(index);
-              //   } else {
-              //     clickedIndices.add(index);
-              //   }
-              // });
-              print(product.name);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DetailPage(product: product)));
-            },
-            child: Container(
+          return Container(
+            decoration: BoxDecoration(
               color: isClicked ? Color(0xFFE3D7FF) : Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
-                        child: Image.asset(
-                          product.imgpath,
-                          // width: 174,
-                          // height: 174,
-                          fit: BoxFit.fill,
+              border: Border(
+                  right: BorderSide(
+                      color: index % 2 == 0 ? Color(0xffdddddd) : Colors.white),
+                  bottom: BorderSide(color: Color(0xffdddddd))),
+            ),
+            child: InkWell(
+              onTap: () {
+                _handleTap(index);
+                // setState(() {
+                //   if (isClicked) {
+                //     clickedIndices.remove(index);
+                //   } else {
+                //     clickedIndices.add(index);
+                //   }
+                // });
+                print(product.name);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailPage(product: product)));
+              },
+              child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(5)),
+                          child: Image.asset(
+                            product.imgpath,
+                            // width: 174,
+                            // height: 174,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Text(
-                        //상품이름
-                        product.name,
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(
-                            fontFamily: 'NotoSans',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: product.price.toString(),
-                              style: TextStyle(
-                                fontFamily: 'NotoSans',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black, // 기본 색상
-                              ),
-                            ),
-                            TextSpan(
-                              text: '원',
-                              style: TextStyle(
-                                fontFamily: 'NotoSans',
-                                fontSize: 12, // '원' 글자만 작게
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          //상품이름
+                          product.name,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                              fontFamily: 'NotoSans',
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ),
-                        textAlign: TextAlign.right,
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: product.price.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'NotoSans',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black, // 기본 색상
+                                ),
+                              ),
+                              TextSpan(
+                                text: '원',
+                                style: TextStyle(
+                                  fontFamily: 'NotoSans',
+                                  fontSize: 12, // '원' 글자만 작게
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
