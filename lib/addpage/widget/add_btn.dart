@@ -1,12 +1,29 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-SafeArea addBtn() {
+SafeArea addBtn(BuildContext context) {
   return SafeArea(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ElevatedButton(
         onPressed: () {
           //버튼 클릭 이벤트
+          showCupertinoDialog(
+              context: context,
+              builder: (context) {
+                return CupertinoAlertDialog(
+                  title: Text("등록 완료 되었습니다."),
+                  actions: [
+                    CupertinoDialogAction(
+                      isDefaultAction: true,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('확인'),
+                    )
+                  ],
+                );
+              });
         },
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.zero,
