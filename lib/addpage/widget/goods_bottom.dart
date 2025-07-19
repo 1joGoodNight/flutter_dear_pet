@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class GoodsBottom extends StatelessWidget {
   @override
@@ -83,6 +84,10 @@ class GoodsBottom extends StatelessWidget {
                   SizedBox(width: 41),
                   Expanded(
                     child: TextField(
+                      keyboardType: TextInputType.number, // 숫자 아니면 입력 불가능
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       decoration: InputDecoration(
                         suffixText: ' 원',
                         enabledBorder: OutlineInputBorder(
