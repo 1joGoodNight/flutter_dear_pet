@@ -53,7 +53,7 @@ class _ListPageState extends State<ListPage> {
       body: SafeArea(
           child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
+          crossAxisCount: 2,
           childAspectRatio: 5 / 6,
         ),
         itemCount: goodsList.length,
