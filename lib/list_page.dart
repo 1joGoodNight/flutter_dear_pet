@@ -72,13 +72,7 @@ class _ListPageState extends State<ListPage> {
             child: InkWell(
               onTap: () {
                 _handleTap(index);
-                // setState(() {
-                //   if (isClicked) {
-                //     clickedIndices.remove(index);
-                //   } else {
-                //     clickedIndices.add(index);
-                //   }
-                // });
+
                 print(product.name);
                 Navigator.push(
                     context,
