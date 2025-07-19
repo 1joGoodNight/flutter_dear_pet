@@ -11,15 +11,13 @@ class GoodsImage extends StatefulWidget {
 
 class _GoodsImageState extends State<GoodsImage> {
   File? _selectedImage; // 선택된 이미지 저장할 변수
-  bool _upImage = false; // 이미지 선택 상태 변수 관리
 
   Future<void> getImagePickerData() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       setState(() {
-        _selectedImage = _selectedImage;
-        _upImage = true; // 이미지 선택이 완료되면 true로 변경
+        _selectedImage = File(image.path);
       });
       print('선택한 이미지 경로: ${image.path}');
     } else {
@@ -32,6 +30,7 @@ class _GoodsImageState extends State<GoodsImage> {
     return Expanded(
         child: Container(
       width: double.infinity,
+      height: 412,
       color: Color(0xFFD9D9D9),
       child: GestureDetector(
         // 이미지 선택과 이미지 아이콘 누르면 갤러리로 이동
@@ -42,44 +41,53 @@ class _GoodsImageState extends State<GoodsImage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _selectedImage != null
-                ? Image.file(_selectedImage!,
-                    width: 412, height: 412,fit: BoxFit.cover,)
-                : Image.asset('assets/images/img_noimg.png'),// NO IMG 이미지
-            SizedBox(
-              height: 16,
-            ),
-            Container(
-              height: 40,
-              width: 144,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.white,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    Text(
-                      '이미지 선택',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF888888),
-                      ),
-                    ),
-                    SizedBox(width: 18),
-                    Image.asset(
-                      'assets/images/icon_plus.png', // + 이미지
-                      color: Color(0xFF888888),
-                      width: 16,
-                      height: 16,
-                    )
-                  ],
-                ),
-              ),
-            ),
+                ? Image.file(
+                    _selectedImage!,
+                    height: 412,
+                    fit: BoxFit.cover,
+                  )
+                : Image.asset('assets/images/img_noimg.png'), // NO IMG 이미지
+            _selectedImage == null
+                ? SizedBox(
+                    height: 16,
+                  )
+                : SizedBox(),
+            _selectedImage == null ? imageInputButton() : SizedBox(),
           ],
         ),
       ),
     ));
   }
+}
+
+Widget imageInputButton() {
+  return Container(
+    height: 40,
+    width: 144,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(50),
+      color: Colors.white,
+    ),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Row(
+        children: [
+          Text(
+            '이미지 선택',
+            style: TextStyle(
+              fontSize: 16,
+              color: Color(0xFF888888),
+            ),
+          ),
+          SizedBox(width: 18),
+          Image.asset(
+            'assets/images/icon_plus.png', // + 이미지
+            color: Color(0xFF888888),
+            width: 16,
+            height: 16,
+          )
+        ],
+      ),
+    ),
+  );
 }
