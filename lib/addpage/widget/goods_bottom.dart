@@ -54,10 +54,15 @@ class GoodsBottom extends StatelessWidget {
                     height: 48,
                     child: TextField(
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFFFFFFF)),
-                          ),
-                          hintText: '상품 이름을 입력하세요.'),
+                        hintText: '상품 이름을 입력하세요.',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFDDDDDD)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: Color(0xFFAAAAAA),
+                        )),
+                      ),
                     ),
                   ))
                 ],
@@ -80,11 +85,15 @@ class GoodsBottom extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         suffixText: ' 원',
-                        border: OutlineInputBorder(
+                        enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Color(0xFFFFFFFF),
+                            color: Color(0xFFDDDDDD),
                           ),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: Color(0xFFAAAAAA),
+                        )),
                       ),
                     ),
                   )
@@ -125,7 +134,13 @@ class GoodsBottom extends StatelessWidget {
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 20, left: 12),
                         hintText: '상품 설명을 입력하세요.',
-                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFDDDDDD)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: Color(0xFFAAAAAA),
+                        )),
                       ),
                     ),
                   ),
