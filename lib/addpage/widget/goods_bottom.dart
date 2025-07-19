@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+
+class GoodsBottom extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView(
+        children: [
+          Container(
+            width: 412,
+            height: 50,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  '상품등록',
+                  style: TextStyle(color: Color(0xFF888888), fontSize: 12),
+                ),
+              ),
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xFFF7F4FF),
+              border: Border(
+                bottom: BorderSide(
+                  color: Color(0xFFDDDDDD),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: 412,
+            height: 69,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                  color: Color(0xFFDDDDDD),
+                ),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Text(
+                    '상품 이름',
+                    style: TextStyle(color: Color(0xFF333333), fontSize: 16),
+                  ),
+                  SizedBox(width: 41),
+                  Expanded(
+                      child: SizedBox(
+                    width: 268,
+                    height: 48,
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFFFFFFF)),
+                          ),
+                          hintText: '상품 이름을 입력하세요.'),
+                    ),
+                  ))
+                ],
+              ),
+            ),
+          ),
+          Container(
+            width: 412,
+            height: 69,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                children: [
+                  Text(
+                    '상품 가격',
+                    style: TextStyle(color: Color(0xFF333333), fontSize: 16),
+                  ),
+                  SizedBox(width: 41),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        suffixText: ' 원',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFFFFFFF),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                  color: Color(0xFFDDDDDD),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: 412,
+            height: 500,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: Text(
+                      '상품 설명',
+                      style: TextStyle(color: Color(0xFF333333), fontSize: 16),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      maxLines: null,
+                      expands: true,
+                      textAlign: TextAlign.start,
+                      textAlignVertical: TextAlignVertical.top,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(top: 20, left: 12),
+                        hintText: '상품 설명을 입력하세요.',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
