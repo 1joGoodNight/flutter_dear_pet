@@ -1,8 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BuyBtn extends StatefulWidget {
+  final int price;
+  final String name;
   const BuyBtn({
     super.key,
+    required this.price,
+    required this.name,
   });
 
   @override
@@ -10,7 +16,17 @@ class BuyBtn extends StatefulWidget {
 }
 
 class _BuyBtnState extends State<BuyBtn> {
-  //수량 변경 버튼
+  int quantity = 1; //수량
+  int total = 0; //총가격
+
+  //초기총액계산
+  @override
+  void initState() {
+    super.initState();
+    total = widget.price * quantity;
+  }
+
+  //수량 변경 버튼 UI
   GestureDetector quantityBtn(Image image, void Function() onTap) {
     return GestureDetector(
       onTap: onTap,
@@ -25,14 +41,19 @@ class _BuyBtnState extends State<BuyBtn> {
     );
   }
 
-  //수량 변경 - 마이너스 이벤트
-  void quantityMinus() {
-    //버튼 이벤트 작성!
-  }
-
-  //수량 변경 + 플러스 이벤트
-  void quantityPlus() {
-    //버튼 이벤트 작성!
+  //수량 변경 함수
+  void quantityUpDown(String updown) {
+    if (updown == 'minus') {
+      if (quantity > 1) {
+        quantity--;
+      }
+    } else if (updown == 'plus') {
+      if (quantity < 99) {
+        quantity++;
+      }
+    }
+    total = (widget.price) * quantity;
+    setState(() {});
   }
 
   //BUY버튼 UI
@@ -40,6 +61,7 @@ class _BuyBtnState extends State<BuyBtn> {
     return GestureDetector(
       onTap: () {
         //버튼 이벤트 작성!
+        showCupertinoDialogBox(context, widget.name, quantity);
       },
       child: Container(
         height: 60,
@@ -54,6 +76,45 @@ class _BuyBtnState extends State<BuyBtn> {
           style: TextStyle(
               fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
         ),
+      ),
+    );
+  }
+
+  //쿠퍼티노 다이얼로그
+  void showCupertinoDialogBox(BuildContext context, String name, int quantity) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) => CupertinoAlertDialog(
+        title: Text('$name을 $quantity개\n구매하시겠습니까?'),
+        actions: [
+          CupertinoDialogAction(
+            child: const Text('취소'),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          CupertinoDialogAction(
+            isDestructiveAction: true,
+            child: const Text('확인'),
+            onPressed: () {
+              // 두 번째 다이얼로그 띄우기
+              showCupertinoDialog(
+                context: context,
+                builder: (context) => CupertinoAlertDialog(
+                  title: const Text('확인되었습니다'),
+                  actions: [
+                    CupertinoDialogAction(
+                      child: const Text('닫기'),
+                      onPressed: () {
+                        //모든 팝업 닫기
+                        int count = 0;
+                        Navigator.popUntil(context, (_) => count++ == 2);
+                      },
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -80,30 +141,31 @@ class _BuyBtnState extends State<BuyBtn> {
                         Image.asset(
                           "assets/images/icon_minus.png",
                         ),
-                        () => quantityMinus()),
-                    const SizedBox(
+                        () => quantityUpDown('minus')),
+                    SizedBox(
                       width: 42,
                       child: Center(
                           child: Text(
-                        '1',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        '$quantity',
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 16),
                       )),
                     ),
                     quantityBtn(
                         Image.asset(
                           "assets/images/icon_plus.png",
                         ),
-                        () => quantityPlus()),
+                        () => quantityUpDown('plus')),
                   ],
                 ),
               ),
-              const Expanded(
+              Expanded(
                   child: Padding(
                 padding: EdgeInsets.only(right: 14),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Total',
                       style: TextStyle(
                           fontSize: 12,
@@ -112,10 +174,10 @@ class _BuyBtnState extends State<BuyBtn> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('17,000',
-                            style:
-                                TextStyle(fontSize: 24, color: Colors.white)),
-                        Text(
+                        Text('${NumberFormat('#,###').format(total)}',
+                            style: const TextStyle(
+                                fontSize: 24, color: Colors.white)),
+                        const Text(
                           '원',
                           style: TextStyle(
                               fontSize: 14,
