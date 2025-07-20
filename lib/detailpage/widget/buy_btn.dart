@@ -80,6 +80,13 @@ class _BuyBtnState extends State<BuyBtn> {
     );
   }
 
+  //장바구니 비우기
+  void clearCart(){
+    total = widget.price;
+    quantity = 1;
+    setState(() {});
+  }
+
   //쿠퍼티노 다이얼로그
   void showCupertinoDialogBox(BuildContext context, String name, int quantity) {
     showCupertinoDialog(
@@ -99,7 +106,7 @@ class _BuyBtnState extends State<BuyBtn> {
               showCupertinoDialog(
                 context: context,
                 builder: (context) => CupertinoAlertDialog(
-                  title: const Text('확인되었습니다'),
+                  title: const Text('구매 완료'),
                   actions: [
                     CupertinoDialogAction(
                       child: const Text('닫기'),
@@ -112,12 +119,14 @@ class _BuyBtnState extends State<BuyBtn> {
                   ],
                 ),
               );
+              clearCart();
             },
           ),
         ],
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
