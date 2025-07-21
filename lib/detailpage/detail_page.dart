@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dear_pet/app_bar.dart';
 import 'package:flutter_dear_pet/detailpage/widget/buy_btn.dart';
@@ -14,9 +16,18 @@ class DetailPage extends StatelessWidget {
   //사진영역 UI
   AspectRatio detail_photo() {
     return AspectRatio(
-      aspectRatio: 1,
-      child: Image.asset(product.imgpath, fit: BoxFit.cover),
-    );
+        aspectRatio: 1,
+        child: product.imgpath.startsWith("assets")
+            ? Image.asset(
+                product.imgpath, //이미지경로
+                // width: 174,
+                // height: 174,
+                fit: BoxFit.cover,
+              )
+            : Image.file(
+                File(product.imgpath),
+                fit: BoxFit.cover,
+              ));
   }
 
   //제목가격 영역 UI

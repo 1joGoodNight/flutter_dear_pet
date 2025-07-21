@@ -96,15 +96,19 @@ class _ListPageState extends State<ListPage> {
                         child: Column(
                           children: [
                             ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5)),
-                              child: Image.asset(
-                                product.imgpath, //이미지경로
-                                // width: 174,
-                                // height: 174,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(5)),
+                                child: product.imgpath.startsWith("assets")
+                                    ? Image.asset(
+                                        product.imgpath, //이미지경로
+                                        // width: 174,
+                                        // height: 174,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.file(
+                                        File(product.imgpath),
+                                        fit: BoxFit.cover,
+                                      )),
                             SizedBox(
                               height: 17,
                             ),
