@@ -88,7 +88,7 @@ class DetailPage extends StatelessWidget {
           detail_description(),
         ],
       ),
-      bottomNavigationBar: CartInBtn(price: product.price, name: product.name, imgpagh: product.imgpath,),
+      bottomNavigationBar: CartInBtn(price: product.price, name: product.name, imgpath: product.imgpath,),
     );
   }
 }

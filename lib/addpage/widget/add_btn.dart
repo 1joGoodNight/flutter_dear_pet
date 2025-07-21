@@ -12,7 +12,7 @@ SafeArea addBtn(
     File? image) {
   return SafeArea(
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
       child: ElevatedButton(
         onPressed: () {
           // 예외처리
