@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dear_pet/models/products.dart';
 
 SafeArea addBtn(
     BuildContext context,
@@ -43,6 +44,10 @@ SafeArea addBtn(
                       onPressed: () {
                         Navigator.pop(
                           context,
+                          Products(name: nameController.text,
+                           price: int.parse(priceController.text),
+                            discriptions: descController.text,
+                             imgpath: image!.path,)
                         );
                       },
                       child: Text('확인'),
