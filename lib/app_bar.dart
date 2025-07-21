@@ -19,6 +19,17 @@ AppBar appBar(BuildContext context) {
     backgroundColor: Colors.white,
     title: Image.asset("assets/images/logo.png"),
     centerTitle: false,
+    actions: [
+      GestureDetector(
+        onTap: () {},
+        child: Container(
+            height: 50,
+            width: 50,
+            padding: EdgeInsets.all(13),
+            color: Colors.transparent,
+            child: Image.asset("assets/images/icon_shopping_bag.png")),
+      )
+    ],
     bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
         child: Container(
