@@ -15,7 +15,7 @@ class DetailPage extends StatelessWidget {
   AspectRatio detail_photo() {
     return AspectRatio(
       aspectRatio: 1,
-      child: Image.asset("assets/images/img01.jpg", fit: BoxFit.cover),
+      child: Image.asset(product.imgpath, fit: BoxFit.cover),
     );
   }
 

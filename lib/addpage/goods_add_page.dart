@@ -13,6 +13,7 @@ class GoodsAddPage extends StatefulWidget {
 
 class _GoodsAddPageState extends State<GoodsAddPage> {
   File? image;
+
   void onImageChanged(File selectedFile) {
     setState(() {
       image = selectedFile;
