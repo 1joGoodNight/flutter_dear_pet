@@ -56,7 +56,7 @@ class _ListPageState extends State<ListPage> {
     return Scaffold(
       appBar: appBar(context),
       body: goodsList.isEmpty
-          ? emptyText()
+          ? emptyText('페이지가 없습니다.')
           : SafeArea(
               child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

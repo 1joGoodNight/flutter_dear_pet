@@ -10,12 +10,12 @@ import 'dart:convert';
 class CartInBtn extends StatefulWidget {
   final int price;
   final String name;
-  final String imgpagh;
+  final String imgpath;
   const CartInBtn({
     super.key,
     required this.price,
     required this.name,
-    required this.imgpagh,
+    required this.imgpath,
   });
 
   @override
@@ -106,7 +106,7 @@ class _CartInBtnState extends State<CartInBtn> {
             child: const Text('확인'),
             onPressed: () {
               //장바구니에 담기
-              addToCart(widget.name, widget.price, quantity, widget.imgpagh);
+              addToCart(widget.name, widget.price, quantity, widget.imgpath);
 
               // 두 번째 다이얼로그 띄우기
               showCupertinoDialog(
@@ -135,7 +135,7 @@ class _CartInBtnState extends State<CartInBtn> {
   }
 
   //장바구니 데이터 함수
-  void addToCart(String name, int price, int quantity, String imgpagh) {
+  void addToCart(String name, int price, int quantity, String imgpath) {
   final existing = cartItems.firstWhere(
     (item) => item.name == name,
     orElse: () => CartItem(name: '', price: 0, quantity: 0, imgpath: ''),
@@ -144,12 +144,7 @@ class _CartInBtnState extends State<CartInBtn> {
   if (existing.name != '') {
     existing.quantity += quantity;
   } else {
-    cartItems.add(CartItem(name: name, price: price, quantity: quantity, imgpath: imgpagh));
-  }
-
-  print('🛒 장바구니 상태:');
-  for (var item in cartItems) {
-    print('${item.name} x ${item.quantity}');
+    cartItems.add(CartItem(name: name, price: price, quantity: quantity, imgpath: imgpath));
   }
 }
 
