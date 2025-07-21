@@ -16,7 +16,7 @@ class Products {
       name: json[0],
       price: json[1],
       discriptions: json[2],
-      imgpath: json[3].replaceAll(r'\', '/'), // 역슬래시 처리
+      imgpath: json[3]//.replaceAll(r'\', '/'), // 역슬래시 처리
     );
   }
 }
