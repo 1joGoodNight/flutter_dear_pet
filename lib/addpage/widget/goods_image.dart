@@ -27,10 +27,12 @@ class _GoodsImageState extends State<GoodsImage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Expanded(
         child: Container(
       width: double.infinity,
-      height: 412,
+      height: screenHeight * 0.4,
       color: Color(0xFFD9D9D9),
       child: GestureDetector(
         // 이미지 선택과 이미지 아이콘 누르면 갤러리로 이동
@@ -41,11 +43,14 @@ class _GoodsImageState extends State<GoodsImage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _selectedImage != null
-                ? Image.file(
-                    _selectedImage!,
-                    height: 412,
-                    fit: BoxFit.cover,
-                  )
+                ? Expanded(
+                  child: Image.file(
+                      _selectedImage!,
+                      //height: screenHeight * 0.38,
+                      width: double.infinity,
+                     fit: BoxFit.contain,
+                    ),
+                )
                 : Image.asset('assets/images/img_noimg.png'), // NO IMG 이미지
             _selectedImage == null
                 ? SizedBox(
