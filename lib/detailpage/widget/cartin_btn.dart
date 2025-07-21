@@ -1,15 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dear_pet/cartpage/cart_page.dart';
+import 'package:flutter_dear_pet/detailpage/widget/cart_item.dart';
 import 'package:intl/intl.dart';
+import 'dart:io';
+import 'dart:convert';
 
 
 class CartInBtn extends StatefulWidget {
   final int price;
   final String name;
+  final String imgpagh;
   const CartInBtn({
     super.key,
     required this.price,
     required this.name,
+    required this.imgpagh,
   });
 
   @override
@@ -99,6 +105,9 @@ class _CartInBtnState extends State<CartInBtn> {
             isDestructiveAction: true,
             child: const Text('확인'),
             onPressed: () {
+              //장바구니에 담기
+              addToCart(widget.name, widget.price, quantity, widget.imgpagh);
+
               // 두 번째 다이얼로그 띄우기
               showCupertinoDialog(
                 context: context,
@@ -111,6 +120,7 @@ class _CartInBtnState extends State<CartInBtn> {
                         //모든 팝업 닫기
                         int count = 0;
                         Navigator.popUntil(context, (_) => count++ == 2);
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => CartPage()));
                       },
                     ),
                   ],
@@ -123,6 +133,27 @@ class _CartInBtnState extends State<CartInBtn> {
       ),
     );
   }
+
+  //장바구니 데이터 함수
+  void addToCart(String name, int price, int quantity, String imgpagh) {
+  final existing = cartItems.firstWhere(
+    (item) => item.name == name,
+    orElse: () => CartItem(name: '', price: 0, quantity: 0, imgpath: ''),
+  );
+
+  if (existing.name != '') {
+    existing.quantity += quantity;
+  } else {
+    cartItems.add(CartItem(name: name, price: price, quantity: quantity, imgpath: imgpagh));
+  }
+
+  print('🛒 장바구니 상태:');
+  for (var item in cartItems) {
+    print('${item.name} x ${item.quantity}');
+  }
+}
+
+
 
   @override
   Widget build(BuildContext context) {
