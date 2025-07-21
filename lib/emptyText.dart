@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
-Center emptyText() {
+Center emptyText(String text) {
   return Center(
-    //crossAxisAlignment: CrossAxisAlignment.center,
-    child: Text('상품이 없습니다.'),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+      Icon(Icons.block, color: Color(0xffdddddd), size: 48,),
+      SizedBox(height: 16,),
+      Text(text, style: TextStyle(fontSize: 16, color: Color(0xff999999)),),
+      SizedBox(height: 60,)
+    ],),
   );
 }
