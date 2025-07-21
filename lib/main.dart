@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           fontFamily: 'NotoSans', scaffoldBackgroundColor: Colors.white),
-      home: GoodsAddPage(),
+      home: ListPage(),
     );
   }
 }

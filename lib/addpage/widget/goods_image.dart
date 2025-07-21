@@ -4,21 +4,20 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class GoodsImage extends StatefulWidget {
-  @override
-  State<GoodsImage> createState() => _GoodsImageState();
-}
+class GoodsImage extends StatelessWidget {
+ 
+GoodsImage(this.selectedImage, this.onImageChanged);
 
-class _GoodsImageState extends State<GoodsImage> {
-  File? _selectedImage; // 선택된 이미지 저장할 변수
-
+  File? selectedImage; // 선택된 이미지 저장할 변수
+ void Function(File selectedFile) onImageChanged;
   Future<void> getImagePickerData() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
-      setState(() {
-        _selectedImage = File(image.path);
-      });
+      onImageChanged(File(image.path));
+      // setState(() {
+      //   _selectedImage = File(image.path);
+      // });
       print('선택한 이미지 경로: ${image.path}');
     } else {
       print('이미지를 선택하지 않았습니다.'); // 선택 안했을 시 해당 문구 출력
@@ -42,22 +41,22 @@ class _GoodsImageState extends State<GoodsImage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _selectedImage != null
+            selectedImage != null
                 ? Expanded(
                   child: Image.file(
-                      _selectedImage!,
+                      selectedImage!,
                       //height: screenHeight * 0.38,
                       width: double.infinity,
                      fit: BoxFit.contain,
                     ),
                 )
                 : Image.asset('assets/images/img_noimg.png'), // NO IMG 이미지
-            _selectedImage == null
+            selectedImage == null
                 ? SizedBox(
                     height: 16,
                   )
                 : SizedBox(),
-            _selectedImage == null ? imageInputButton() : SizedBox(),
+            selectedImage == null ? imageInputButton() : SizedBox(),
           ],
         ),
       ),

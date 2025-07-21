@@ -1,15 +1,23 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
 
-SafeArea addBtn(BuildContext context, TextEditingController nameController, TextEditingController priceController, TextEditingController descController) {
+SafeArea addBtn(BuildContext context, TextEditingController nameController, TextEditingController priceController, TextEditingController descController, File? image) {
   return SafeArea(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ElevatedButton(
         onPressed: () {
           // 예외처리
+          if (image == null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("사진을 선택해주세요.")),
+            );
+            return;
+          }
           if (nameController.text.trim().isEmpty || priceController.text.trim().isEmpty || descController.text.trim().isEmpty) {
             // 입력값이 없으면 SnackBar 등으로 사용자에게 알림
             ScaffoldMessenger.of(context).showSnackBar(
@@ -28,7 +36,7 @@ SafeArea addBtn(BuildContext context, TextEditingController nameController, Text
                     CupertinoDialogAction(
                       isDefaultAction: true,
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.pop(context);
                       },
                       child: Text('확인'),
                     )
