@@ -41,16 +41,18 @@ SafeArea addBtn(
                   actions: [
                     CupertinoDialogAction(
                       isDefaultAction: true,
-                      onPressed: () {
-                        Navigator.pop(
-                          context,
-                          Products(name: nameController.text,
-                           price: int.parse(priceController.text),
-                            discriptions: descController.text,
-                             imgpath: image!.path,)
-                        );
-                      },
                       child: Text('확인'),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.pop(
+                            context,
+                            Products(
+                              name: nameController.text,
+                              price: int.parse(priceController.text),
+                              discriptions: descController.text,
+                              imgpath: image.path,
+                            ));
+                      },
                     )
                   ],
                 );
