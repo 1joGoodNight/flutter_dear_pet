@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 SafeArea buyBtn(BuildContext context) {
   return SafeArea(
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
       child: ElevatedButton(
         onPressed: () {
           //버튼 클릭 이벤트

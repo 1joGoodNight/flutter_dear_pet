@@ -154,7 +154,7 @@ class _CartInBtnState extends State<CartInBtn> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
         child: Container(
           height: 60,
           decoration: BoxDecoration(
