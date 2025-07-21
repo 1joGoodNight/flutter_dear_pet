@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dear_pet/addpage/goods_add_page.dart';
@@ -161,31 +163,36 @@ class _ListPageState extends State<ListPage> {
                 );
               },
             )),
-      floatingActionButton: addBtn(context),
+      floatingActionButton: addBtn(context, goodsList),
     );
   }
-}
 
-GestureDetector addBtn(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (_) => GoodsAddPage()));
-    },
-    child: Container(
-      height: 60,
-      width: 60,
-      decoration: BoxDecoration(
-        color: const Color(0xFFAA61F4),
-        shape: BoxShape.circle,
-      ),
-      child: Center(
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 34,
+  GestureDetector addBtn(BuildContext context, goodsList) {
+    Products myProducts;
+    return GestureDetector(
+      onTap: () async {
+        Products? result = await Navigator.push(
+            context, MaterialPageRoute(builder: (_) => GoodsAddPage()));
+        if (result != null) {
+          goodsList.add(result);
+          setState(() {});
+        }
+      },
+      child: Container(
+        height: 60,
+        width: 60,
+        decoration: BoxDecoration(
+          color: const Color(0xFFAA61F4),
+          shape: BoxShape.circle,
+        ),
+        child: Center(
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 34,
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
