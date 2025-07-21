@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dear_pet/app_bar.dart';
 import 'package:flutter_dear_pet/detailpage/detail_page.dart';
 import 'package:flutter_dear_pet/models/products.dart';
+import 'package:intl/intl.dart';
 
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
@@ -29,7 +30,7 @@ class _ListPageState extends State<ListPage> {
 
     setState(() {
       goodsList = loadedProducts;
-      print(goodsList.isEmpty);
+      // print(goodsList.isEmpty);
     });
   }
 
@@ -51,16 +52,15 @@ class _ListPageState extends State<ListPage> {
     return Scaffold(
       appBar: appBar(),
       body: goodsList.isEmpty
-          ? Column(
-              children: [
-                Text('상품이 없습니다.'),
-              ],
+          ? Center(
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              child: Text('상품이 없습니다.'),
             )
           : SafeArea(
               child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 5 / 6,
+                childAspectRatio: 5 / 6.5,
               ),
               itemCount: goodsList.length,
               itemBuilder: (context, index) {
@@ -81,7 +81,7 @@ class _ListPageState extends State<ListPage> {
                     onTap: () {
                       _handleTap(index);
 
-                      print(product.name);
+                      //print(product.name);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -93,17 +93,18 @@ class _ListPageState extends State<ListPage> {
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: [
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5)),
-                                child: Image.asset(
-                                  product.imgpath,
-                                  // width: 174,
-                                  // height: 174,
-                                  fit: BoxFit.fill,
-                                ),
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5)),
+                              child: Image.asset(
+                                product.imgpath,
+                                // width: 174,
+                                // height: 174,
+                                fit: BoxFit.cover,
                               ),
+                            ),
+                            SizedBox(
+                              height: 17,
                             ),
                             SizedBox(
                               width: double.infinity,
@@ -123,7 +124,11 @@ class _ListPageState extends State<ListPage> {
                                 TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: product.price.toString(),
+                                      //'${NumberFormat('#,###').format(total)}'
+                                      text: product.price == 0
+                                          ? '무료'
+                                          : NumberFormat('#,###')
+                                              .format(product.price),
                                       style: TextStyle(
                                         fontFamily: 'NotoSans',
                                         fontSize: 18,
@@ -137,7 +142,10 @@ class _ListPageState extends State<ListPage> {
                                         fontFamily: 'NotoSans',
                                         fontSize: 12, // '원' 글자만 작게
                                         fontWeight: FontWeight.w400,
-                                        color: Colors.black,
+                                        color:
+                                            product.price != 0 //아이디어 기여자:정귀요미소린
+                                                ? Colors.black
+                                                : Colors.transparent,
                                       ),
                                     ),
                                   ],
