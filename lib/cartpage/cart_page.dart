@@ -136,7 +136,7 @@ class _CartPageState extends State<CartPage> {
           : ListView(
               children: cartItems.map((item) => cartItem(item)).toList(),
             ),
-      bottomNavigationBar: buyBtn(context),
+      bottomNavigationBar: cartItems.isEmpty ? null : buyBtn(context),
     );
   }
 }
