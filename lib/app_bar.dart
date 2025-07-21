@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
-AppBar appBar() {
+AppBar appBar(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
+    leading: !Navigator.canPop(context)
+        ? null
+        : GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+                height: 50,
+                width: 50,
+                padding: EdgeInsets.all(13),
+                color: Colors.transparent,
+                child: Image.asset("assets/images/icon_left.png")),
+          ),
+    backgroundColor: Colors.white,
     title: Image.asset("assets/images/logo.png"),
     centerTitle: false,
     bottom: PreferredSize(

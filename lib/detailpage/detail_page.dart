@@ -75,12 +75,12 @@ class DetailPage extends StatelessWidget {
   }
 
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     //가격표 재구성(세자리마다 콤마)
     String thisPrice = formatCurrency.format(product.price).toString();
 
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       body: ListView(
         children: [
           detail_photo(),
