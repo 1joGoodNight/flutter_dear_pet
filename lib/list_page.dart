@@ -30,7 +30,7 @@ class _ListPageState extends State<ListPage> {
 
     setState(() {
       goodsList = loadedProducts;
-      print(goodsList.isEmpty);
+      // print(goodsList.isEmpty);
     });
   }
 
@@ -60,7 +60,7 @@ class _ListPageState extends State<ListPage> {
               child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 5 / 6,
+                childAspectRatio: 5 / 6.5,
               ),
               itemCount: goodsList.length,
               itemBuilder: (context, index) {
@@ -93,17 +93,18 @@ class _ListPageState extends State<ListPage> {
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: [
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5)),
-                                child: Image.asset(
-                                  product.imgpath,
-                                  // width: 174,
-                                  // height: 174,
-                                  fit: BoxFit.cover,
-                                ),
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5)),
+                              child: Image.asset(
+                                product.imgpath,
+                                // width: 174,
+                                // height: 174,
+                                fit: BoxFit.cover,
                               ),
+                            ),
+                            SizedBox(
+                              height: 17,
                             ),
                             SizedBox(
                               width: double.infinity,
