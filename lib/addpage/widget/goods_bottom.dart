@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dear_pet/addpage/widget/add_btn.dart';
 import 'package:flutter_dear_pet/addpage/widget/goods_image.dart';
 
 class GoodsBottom extends StatefulWidget {
+  File? selectedImage;
+  GoodsBottom(this.selectedImage);
   @override
   State<GoodsBottom> createState() => _GoodsBottomState();
 }
@@ -197,7 +201,8 @@ class _GoodsBottomState extends State<GoodsBottom> {
               ],
             ),
           ),
-          addBtn(context, _nameController, _priceController, _descController),
+          addBtn(context, _nameController, _priceController, _descController,
+              widget.selectedImage),
         ],
       ),
     );
