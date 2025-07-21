@@ -92,25 +92,28 @@ class _ListPageState extends State<ListPage> {
                     },
                     child: Container(
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
-                            ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5)),
-                                child: product.imgpath.startsWith("assets")
-                                    ? Image.asset(
-                                        product.imgpath, //이미지경로
-                                        // width: 174,
-                                        // height: 174,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Image.file(
-                                        File(product.imgpath),
-                                        fit: BoxFit.cover,
-                                      )),
+                            AspectRatio(
+                              aspectRatio: 1,
+                              child: ClipRRect(
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(5)),
+                                  child: product.imgpath.startsWith("assets")
+                                      ? Image.asset(
+                                          product.imgpath, //이미지경로
+                                          // width: 174,
+                                          // height: 174,
+                                          fit: BoxFit.cover,
+                                        )
+                                      : Image.file(
+                                          File(product.imgpath),
+                                          fit: BoxFit.cover,
+                                        )),
+                            ),
                             SizedBox(
-                              height: 17,
+                              height: 13,
                             ),
                             SizedBox(
                               width: double.infinity,
@@ -124,6 +127,7 @@ class _ListPageState extends State<ListPage> {
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
+                            SizedBox(height: 2,),
                             SizedBox(
                               width: double.infinity,
                               child: Text.rich(

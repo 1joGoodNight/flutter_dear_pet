@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dear_pet/cartpage/cart_page.dart';
 
 AppBar appBar(BuildContext context) {
   return AppBar(
@@ -10,22 +11,28 @@ AppBar appBar(BuildContext context) {
               Navigator.pop(context);
             },
             child: Container(
-                height: 50,
-                width: 50,
-                padding: EdgeInsets.all(13),
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 color: Colors.transparent,
-                child: Image.asset("assets/images/icon_left.png")),
+                child: Image.asset("assets/images/icon_left.png",)),
           ),
+    leadingWidth: 38,
     backgroundColor: Colors.white,
-    title: Image.asset("assets/images/logo.png"),
+    title: SizedBox(
+        width: 127,
+        child: Image.asset(
+          "assets/images/logo.png",
+        )),
     centerTitle: false,
     actions: [
       GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => CartPage()));
+        },
         child: Container(
             height: 50,
             width: 50,
-            padding: EdgeInsets.all(13),
+            padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
             color: Colors.transparent,
             child: Image.asset("assets/images/icon_shopping_bag.png")),
       )
