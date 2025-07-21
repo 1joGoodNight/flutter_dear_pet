@@ -52,7 +52,7 @@ class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       body: goodsList.isEmpty
           ? emptyText()
           : SafeArea(

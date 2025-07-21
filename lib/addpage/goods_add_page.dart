@@ -23,7 +23,7 @@ class _GoodsAddPageState extends State<GoodsAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       body: Column(
         children: [
           GoodsImage(image, onImageChanged),
