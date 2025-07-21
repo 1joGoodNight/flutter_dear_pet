@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dear_pet/app_bar.dart';
-import 'package:flutter_dear_pet/detailpage/widget/buy_btn.dart';
+import 'package:flutter_dear_pet/detailpage/widget/cartin_btn.dart';
 import 'package:flutter_dear_pet/models/products.dart';
 import 'package:intl/intl.dart';
 
@@ -88,7 +88,7 @@ class DetailPage extends StatelessWidget {
           detail_description(),
         ],
       ),
-      bottomNavigationBar: BuyBtn(price: product.price, name: product.name),
+      bottomNavigationBar: CartInBtn(price: product.price, name: product.name, imgpagh: product.imgpath,),
     );
   }
 }
