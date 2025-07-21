@@ -15,7 +15,7 @@ class GoodsAddPage extends StatelessWidget {
           GoodsBottom(),
         ],
       ),
-      bottomNavigationBar: addBtn(context),
+
     );
   }
 }

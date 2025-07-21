@@ -1,12 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-SafeArea addBtn(BuildContext context) {
+
+
+SafeArea addBtn(BuildContext context, TextEditingController nameController, TextEditingController priceController, TextEditingController descController) {
   return SafeArea(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ElevatedButton(
         onPressed: () {
+          // 예외처리
+          if (nameController.text.trim().isEmpty || priceController.text.trim().isEmpty || descController.text.trim().isEmpty) {
+            // 입력값이 없으면 SnackBar 등으로 사용자에게 알림
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("내용을 입력해주세요.")),
+            );
+            return;
+          }
+
           //버튼 클릭 이벤트
           showCupertinoDialog(
               context: context,
