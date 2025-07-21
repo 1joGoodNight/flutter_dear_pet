@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dear_pet/addpage/goods_add_page.dart';
 import 'package:flutter_dear_pet/app_bar.dart';
 import 'package:flutter_dear_pet/detailpage/detail_page.dart';
+import 'package:flutter_dear_pet/emptyText.dart';
 import 'package:flutter_dear_pet/models/products.dart';
 import 'package:intl/intl.dart';
 
@@ -52,10 +54,7 @@ class _ListPageState extends State<ListPage> {
     return Scaffold(
       appBar: appBar(),
       body: goodsList.isEmpty
-          ? Center(
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              child: Text('상품이 없습니다.'),
-            )
+          ? emptyText()
           : SafeArea(
               child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -85,6 +84,7 @@ class _ListPageState extends State<ListPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
+                              //상세 페이지로 이동
                               builder: (context) =>
                                   DetailPage(product: product)));
                     },
@@ -97,7 +97,7 @@ class _ListPageState extends State<ListPage> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(5)),
                               child: Image.asset(
-                                product.imgpath,
+                                product.imgpath, //이미지경로
                                 // width: 174,
                                 // height: 174,
                                 fit: BoxFit.cover,
@@ -161,6 +161,31 @@ class _ListPageState extends State<ListPage> {
                 );
               },
             )),
+      floatingActionButton: addBtn(context),
     );
   }
+}
+
+GestureDetector addBtn(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => GoodsAddPage()));
+    },
+    child: Container(
+      height: 60,
+      width: 60,
+      decoration: BoxDecoration(
+        color: const Color(0xFFAA61F4),
+        shape: BoxShape.circle,
+      ),
+      child: Center(
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 34,
+        ),
+      ),
+    ),
+  );
 }
