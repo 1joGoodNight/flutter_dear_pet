@@ -13,11 +13,13 @@ class GoodsAddPage extends StatefulWidget {
 
 class _GoodsAddPageState extends State<GoodsAddPage> {
   File? image;
-  void onImageChanged (File selectedFile) {
+
+  void onImageChanged(File selectedFile) {
     setState(() {
       image = selectedFile;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,6 @@ class _GoodsAddPageState extends State<GoodsAddPage> {
           GoodsBottom(image),
         ],
       ),
-
     );
   }
 }
