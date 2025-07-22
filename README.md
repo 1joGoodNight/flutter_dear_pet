@@ -1,16 +1,95 @@
-# flutter_dear_pet
+          __      _
+       o'')}____//
+        `_/      )    Flutter Dear Pet
+        (_(_/-(_/     ─────────────────
 
-A new Flutter project.
+           /\_/\    /\_/\
+          ( o.o )  ( -.- )   반려동물 용품 관리 & 구매 앱
+           > ^ <    > ^ <    with Flutter & Dart
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+                ## 프로젝트 소개
+   ____                                           ____             __      
+  /\  _`\                                        /\  _`\          /\ \__   
+  \ \ \/\ \     __      __      _ __             \ \ \L\ \   __   \ \ ,_\  
+   \ \ \ \ \  /'__`\  /'__`\   /\`'__\            \ \ ,__/ /'__`\  \ \ \/  
+    \ \ \_\ \/\  __/ /\ \L\.\_ \ \ \/              \ \ \/ /\  __/   \ \ \_ 
+     \ \____/\ \____\\ \__/.\_\ \ \_\               \ \_\ \ \____\   \ \__\
+      \/___/  \/____/ \/__/\/_/  \/_/                \/_/  \/____/    \/__/
+                                                                         
+                      Flutter Dear Pet
+                  ───────────────────────
 
-A few resources to get you started if this is your first Flutter project:
+    반려동물 용품을 관리하고 구매할 수 있는  
+            Flutter 애플리케이션입니다.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+   사용자는 다양한 반려동물 용품을 확인하고,  
+      상세 정보를 볼 수 있으며,  
+    장바구니에 추가하고 구매할 수 있습니다.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+                ## 주요 기능
+  - **상품 목록 보기**: 그리드 형식으로 반려동물 용품 목록을 확인
+  - **상품 상세 정보**: 각 상품을 클릭하여 상세 정보 확인
+  - **장바구니 기능**: 원하는 상품을 장바구니에 추가
+  - **상품 추가**: 새로운 상품 추가 기능
+
+
+                ## 시작하기
+        ### 필수 조건
+    - Flutter SDK 설치
+    - Android Studio 또는 VS Code
+    - 모바일 디바이스 또는 에뮬레이터
+
+        ### 설치 방법
+    1. 저장소 클론
+       ```
+       git clone [저장소 URL]
+       ```
+    2. 프로젝트 디렉토리 이동
+       ```
+       cd flutter_dear_pet
+       ```
+    3. 패키지 설치
+       ```
+       flutter pub get
+       ```
+    4. 앱 실행
+       ```
+       flutter run
+       ```
+
+                ## 프로젝트 구조
+                +-------------------+
+                |   lib/main.dart    |
+                |  (앱의 진입점)      |
+                +---------+---------+
+                          |
+          +---------------+---------------+
+          |                               |
+     +----v----+                    +----v----+
+     |list_page|                    | models/ |
+     |.dart    |                    |         |
+     +----+----+                    +----+----+
+          |                               |
+     +----v----+                    +----v----+
+     |detailpage|                   | data/   |
+     +----+----+                    | data.json |
+          |
+     +----v----+
+     |cartpage |
+     +----+----+
+          |
+     +----v----+
+     | addpage |
+     +---------+
+
+                ## 기술 스택
+       - Flutter
+       - Dart
+       - JSON 데이터 처리
+
+
+            /\_/\   ｡◕‿◕｡   /\\_/\
+           ( o.o ) Dear Pet ( o.o )
+            > ^ <           > ^ <
