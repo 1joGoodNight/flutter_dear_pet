@@ -170,7 +170,6 @@ class _ListPageState extends State<ListPage> {
   }
 
   GestureDetector addBtn(BuildContext context, goodsList) {
-    Products myProducts;
     return GestureDetector(
       onTap: () async {
         Products? result = await Navigator.push(

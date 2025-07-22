@@ -1,12 +1,32 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-SafeArea buyBtn(BuildContext context) {
+SafeArea buyBtn(BuildContext context, VoidCallback onBuyComplete) {
   return SafeArea(
     child: Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
       child: ElevatedButton(
         onPressed: () {
           //버튼 클릭 이벤트
+          showCupertinoDialog(
+            context: context,
+            builder: (context) {
+              return CupertinoAlertDialog(
+                title: Text("구매 완료 되었습니다."),
+                actions: [
+                  CupertinoDialogAction(
+                    isDefaultAction: true,
+                    child: Text('확인'),
+                    onPressed: () {
+                      onBuyComplete();
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            },
+          );
         },
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.zero,

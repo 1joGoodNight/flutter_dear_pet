@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dear_pet/cartpage/cart_page.dart';
 import 'package:flutter_dear_pet/detailpage/widget/cart_item.dart';
 import 'package:intl/intl.dart';
-import 'dart:io';
-import 'dart:convert';
-
 
 class CartInBtn extends StatefulWidget {
   final int price;
@@ -120,7 +117,8 @@ class _CartInBtnState extends State<CartInBtn> {
                         //모든 팝업 닫기
                         int count = 0;
                         Navigator.popUntil(context, (_) => count++ == 2);
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => CartPage()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => CartPage()));
                       },
                     ),
                   ],
@@ -136,19 +134,18 @@ class _CartInBtnState extends State<CartInBtn> {
 
   //장바구니 데이터 함수
   void addToCart(String name, int price, int quantity, String imgpath) {
-  final existing = cartItems.firstWhere(
-    (item) => item.name == name,
-    orElse: () => CartItem(name: '', price: 0, quantity: 0, imgpath: ''),
-  );
+    final existing = cartItems.firstWhere(
+      (item) => item.name == name,
+      orElse: () => CartItem(name: '', price: 0, quantity: 0, imgpath: ''),
+    );
 
-  if (existing.name != '') {
-    existing.quantity += quantity;
-  } else {
-    cartItems.add(CartItem(name: name, price: price, quantity: quantity, imgpath: imgpath));
+    if (existing.name != '') {
+      existing.quantity += quantity;
+    } else {
+      cartItems.add(CartItem(
+          name: name, price: price, quantity: quantity, imgpath: imgpath));
+    }
   }
-}
-
-
 
   @override
   Widget build(BuildContext context) {

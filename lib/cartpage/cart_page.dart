@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dear_pet/app_bar.dart';
+import 'package:flutter_dear_pet/common/app_bar.dart';
 import 'package:flutter_dear_pet/cartpage/widget/buy_btn.dart';
 import 'package:flutter_dear_pet/detailpage/widget/cart_item.dart';
-import 'package:flutter_dear_pet/emptyText.dart';
+import 'package:flutter_dear_pet/listpage/widgets/emptyText.dart';
 
 class CartPage extends StatefulWidget {
   CartPage({super.key});
@@ -150,7 +150,13 @@ class _CartPageState extends State<CartPage> {
           : ListView(
               children: cartItems.map((item) => cartItem(item)).toList(),
             ),
-      bottomNavigationBar: cartItems.isEmpty ? null : buyBtn(context),
+      bottomNavigationBar: cartItems.isEmpty
+          ? null
+          : buyBtn(context, () {
+              setState(() {
+                cartItems.clear();
+              });
+            }),
     );
   }
 }
