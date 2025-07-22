@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dear_pet/addpage/goods_add_page.dart';
-import 'package:flutter_dear_pet/app_bar.dart';
+import 'package:flutter_dear_pet/common/app_bar.dart';
 import 'package:flutter_dear_pet/detailpage/detail_page.dart';
-import 'package:flutter_dear_pet/emptyText.dart';
+import 'package:flutter_dear_pet/listpage/widgets/emptyText.dart';
 import 'package:flutter_dear_pet/models/products.dart';
 import 'package:intl/intl.dart';
 
@@ -28,13 +26,12 @@ class _ListPageState extends State<ListPage> {
     //print(jsonString.runtimeType); //data.json에서 파일 읽고 문자열로 jsonString저장
     final List<dynamic> jsonData = json
         .decode(jsonString); //jsonString를 List<dynamic>형태로 변환하여 jsonData에 저장
-    //print(jsonData.runtimeType);
+
     final List<Products> loadedProducts =
         jsonData.map((item) => Products.fromJson(item)).toList();
 
     setState(() {
       goodsList = loadedProducts;
-      // print(goodsList.isEmpty);
     });
   }
 
@@ -66,7 +63,7 @@ class _ListPageState extends State<ListPage> {
               itemCount: goodsList.length,
               itemBuilder: (context, index) {
                 final product = goodsList[index];
-                //  List.generate(20, (index) {
+
                 bool isClicked = clickedIndices.contains(index);
                 return Container(
                   decoration: BoxDecoration(
@@ -81,8 +78,6 @@ class _ListPageState extends State<ListPage> {
                   child: InkWell(
                     onTap: () {
                       _handleTap(index);
-
-                      //print(product.name);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -98,13 +93,11 @@ class _ListPageState extends State<ListPage> {
                             AspectRatio(
                               aspectRatio: 1,
                               child: ClipRRect(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(5)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5)),
                                   child: product.imgpath.startsWith("assets")
                                       ? Image.asset(
                                           product.imgpath, //이미지경로
-                                          // width: 174,
-                                          // height: 174,
                                           fit: BoxFit.cover,
                                         )
                                       : Image.file(
@@ -127,14 +120,15 @@ class _ListPageState extends State<ListPage> {
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
-                            SizedBox(height: 2,),
+                            SizedBox(
+                              height: 2,
+                            ),
                             SizedBox(
                               width: double.infinity,
                               child: Text.rich(
                                 TextSpan(
                                   children: [
                                     TextSpan(
-                                      //'${NumberFormat('#,###').format(total)}'
                                       text: product.price == 0
                                           ? '무료'
                                           : NumberFormat('#,###')
