@@ -144,7 +144,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context),
+      appBar: appBar(context, showAction: false),
       body: cartItems.isEmpty
           ? emptyText('장바구니가 비어있습니다.')
           : ListView(

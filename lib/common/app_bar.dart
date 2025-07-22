@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dear_pet/cartpage/cart_page.dart';
 
-AppBar appBar(BuildContext context) {
+AppBar appBar(BuildContext context, {bool showAction = true}) {
   return AppBar(
     automaticallyImplyLeading: false,
     leading: !ModalRoute.of(context)!.canPop
@@ -13,7 +13,9 @@ AppBar appBar(BuildContext context) {
             child: Container(
                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 color: Colors.transparent,
-                child: Image.asset("assets/images/icon_left.png",)),
+                child: Image.asset(
+                  "assets/images/icon_left.png",
+                )),
           ),
     leadingWidth: 38,
     backgroundColor: Colors.white,
@@ -24,18 +26,19 @@ AppBar appBar(BuildContext context) {
         )),
     centerTitle: false,
     actions: [
-      GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => CartPage()));
-        },
-        child: Container(
-            height: 50,
-            width: 50,
-            padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-            color: Colors.transparent,
-            child: Image.asset("assets/images/icon_shopping_bag.png")),
-      )
+      if (showAction)
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => CartPage()));
+          },
+          child: Container(
+              height: 50,
+              width: 50,
+              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+              color: Colors.transparent,
+              child: Image.asset("assets/images/icon_shopping_bag.png")),
+        )
     ],
     bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
