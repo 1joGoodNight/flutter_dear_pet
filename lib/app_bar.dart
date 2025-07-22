@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 AppBar appBar(BuildContext context) {
   return AppBar(
     automaticallyImplyLeading: false,
-    leading: !Navigator.canPop(context)
+    leading: !ModalRoute.of(context)!.canPop
         ? null
         : GestureDetector(
             onTap: () {
