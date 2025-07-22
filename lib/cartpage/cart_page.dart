@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dear_pet/app_bar.dart';
 import 'package:flutter_dear_pet/cartpage/widget/buy_btn.dart';
@@ -27,7 +29,19 @@ class _CartPageState extends State<CartPage> {
             height: 80,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: Image.asset(item.imgpath),
+              child: item.imgpath.isNotEmpty
+                  ? (item.imgpath.startsWith("assets"))
+                      ? Image.asset(
+                          item.imgpath,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.file(
+                          File(item.imgpath),
+                          fit: BoxFit.cover,
+                        )
+                  : Container(
+                      color: Colors.grey,
+                    ),
             ),
           ),
           const SizedBox(width: 20),
