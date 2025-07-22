@@ -4,7 +4,7 @@ import 'package:flutter_dear_pet/cartpage/cart_page.dart';
 AppBar appBar(BuildContext context) {
   return AppBar(
     automaticallyImplyLeading: false,
-    leading: !Navigator.canPop(context)
+    leading: !ModalRoute.of(context)!.canPop
         ? null
         : GestureDetector(
             onTap: () {
